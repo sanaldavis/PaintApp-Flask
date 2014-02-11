@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "{{ url_for('static', filename = 'main.css') }}"></strong>
+		<title> A Simple Paint Application </title>
+		
+		
+	</head>
+	<body>
+		
+		<script src="{{url_for('static',filename='min.js')}}"></script>
+	
+		<div id='radio'>
+
+		<input id='reset' type='button' value='Reset'>
+
+		<input id='line' type='button' value='Line'>
+
+		<input id='rect' type='button' value='Rectangle'>
+			
+		<input id='circle' type='button' value='Circle'>		
+
+		<input id='pencil' type='button' value='Pencil'>
+
+		<input id='erase' type='button' value='Erase'>
+						
+		Width <select id='width'>
+                <option value='1' selected> 1 </option>
+                <option value='2'> 2 </option>
+                <option value='3'> 3 </option>
+                <option value='4'> 4 </option>
+                <option value='5'> 5 </option>
+		</select>		
+
+		<input id='stroke' name='filling' type='radio' value='0'/> Stroke
+                <input id='fill' name='filling' type='radio' value='1'/> Fill
+	
+		<input type='button' value="Recent Pictures" id='recent' style ="width:150px;background-color:#0000ff" onclick="pics()">
+		
+		</div>
+
+		<canvas id='canvas' width='700' height='500'>
+			canvas not supported	
+		</canvas>
+			
+		<br>
+
+		<input type='button' onclick = "color('#0000ff')" style ="width:20px;height:20px;background-color:#0000ff">
+		<input type='button' onclick = "color('#009fff')" style ="width:20px;height:20px;background-color:#009fff">
+		<input type='button' onclick = "color('#0fffff')" style ="width:20px;height:20px;background-color:#0fffff">
+		<input type='button' onclick = "color('#bfffff')" style ="width:20px;height:20px;background-color:#bfffff">
+		<input type='button' onclick = "color('#000000')" style ="width:20px;height:20px;background-color:#000000">
+		<input type='button' onclick = "color('#333333')" style ="width:20px;height:20px;background-color:#333333">
+		<input type='button' onclick = "color('#666666')" style ="width:20px;height:20px;background-color:#666666">
+		<input type='button' onclick = "color('#999999')" style ="width:20px;height:20px;background-color:#999999">
+		<input type='button' onclick = "color('#ffcc66')" style ="width:20px;height:20px;background-color:#ffcc66">
+		<input type='button' onclick = "color('#ffcc00')" style ="width:20px;height:20px;background-color:#ffcc00">
+		<input type='button' onclick = "color('#ffff00')" style ="width:20px;height:20px;background-color:#ffff00">
+		<input type='button' onclick = "color('#ffff99')" style ="width:20px;height:20px;background-color:#ffff99">
+		<input type='button' onclick = "color('#003300')" style ="width:20px;height:20px;background-color:#003300">
+		<input type='button' onclick = "color('#555000')" style ="width:20px;height:20px;background-color:#555000">
+		<input type='button' onclick = "color('#00ff00')" style ="width:20px;height:20px;background-color:#00ff00">
+		<input type='button' onclick = "color('#99ff99')" style ="width:20px;height:20px;background-color:#99ff99">
+		<input type='button' onclick = "color('#f00000')" style ="width:20px;height:20px;background-color:#f00000">
+		<input type='button' onclick = "color('#ff6600')" style ="width:20px;height:20px;background-color:#ff6600">
+		<input type='button' onclick = "color('#ff9933')" style ="width:20px;height:20px;background-color:#ff9933">
+		<input type='button' onclick = "color('#F5DEB3')" style ="width:20px;height:20px;background-color:#F5DEB3">
+		<input type='button' onclick = "color('#FFFFFF')" style ="width:20px;height:20px;background-color:#FFFFFF">
+		<input type='button' onclick = "color('#663300')" style ="width:20px;height:20px;background-color:#663300">
+		<input type='button' onclick = "color('#cc6600')" style ="width:20px;height:20px;background-color:#cc6600">
+		<input type='button' onclick = "color('#DEB887')" style ="width:20px;height:20px;background-color:#DEB887">
+		<input type='button' onclick = "color('#aa0fff')" style ="width:20px;height:20px;background-color:#aa0fff">
+		<input type='button' onclick = "color('#cc66cc')" style ="width:20px;height:20px;background-color:#cc66cc">
+		<input type='button' onclick = "color('#ff66ff')" style ="width:20px;height:20px;background-color:#ff66ff">
+		<input type='button' onclick = "color('#ff99ff')" style ="width:20px;height:20px;background-color:#ff99ff">
+
+		<br><br>Filename:
+		<input id='filename' name='filename'>
+		<input type='button' value='Save' id='save'>
+		
+
+		
+		<script src = "{{ url_for( 'static', filename = 'js/paint.js') }}"></script>
+	</body>
+</html>

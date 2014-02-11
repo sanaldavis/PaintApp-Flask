@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "{{ url_for('static', filename = 'main.css') }}"></strong>
+		<title> A Simple Paint Application </title>
+		
+		
+	</head>
+	<body>
+		<canvas id='canvas' width='700' height='500'>
+		</canvas>
+		{% for post in posts %}
+		<p>pic no: {{post.id}}</p>
+		<p>pic name: {{post.title}}</p><br>
+		<input type=button id={{post.imagedata}} value="Click to load" onclick="load(this.id)">
+		<input type=button value="Home" onclick="homepic()" style ="width:150px;height:20px;background-color:#003300">
+		<script type="text/javascript">
+			function homepic()
+			{
+				document.location.href="/";
+			}
+			function load(data)
+			{
+				var canvas = document.getElementById("canvas");
+				var context=canvas.getContext('2d');
+				l=JSON.parse(data);
+				for (i in l)
+				{
+					if(l[i]['Type']=='line')
+					{
+					context.beginPath()
+					x0=l[i]['X0']
+					y0=l[i]['Y0']
+					x1=l[i]['X1']
+					y1=l[i]['Y1']
+					context.moveTo(x0,y0)
+					context.lineTo(x1,y1)
+					context.lineWidth=l[i]['Width'];
+					context.strokeStyle=l[i]['Color'];
+					context.stroke()
+					context.closePath()
+					}
+					if (l[i]["Type"]=='rect')
+					{
+					startx=l[i]["X0"]
+					starty=l[i]["Y0"]
+					rectw=l[i]["X1"];
+					recth=l[i]["Y1"];
+					context.strokeStyle=l[i]['Color']
+					context.fillStyle=l[i]['Color']
+					context.lineWidth=l[i]['Width']
+					context.strokeRect(startx,starty,rectw,recth);
+						if (l[i]["Fill"]==1){
+							context.fillRect(startx,starty,rectw,recth);
+								}
+					}
+					if (l[i]["Type"]=='circle')
+					{
+					context.beginPath();
+					midx=l[i]["X0"]
+					midy=l[i]["Y0"]
+					radius=l[i]["R"] 
+					context.arc(midx, midy, radius, 0, Math.PI*2, false);
+					context.strokeStyle=l[i]['Color']
+					context.fillStyle=l[i]['Color']
+					context.lineWidth=l[i]['Width']
+						if(l[i]['Fill']==1){
+								context.fill()
+								}
+					context.stroke();
+					context.closePath();
+					}
+					if(l[i]['Type']=='pencile')
+					{
+   					context.beginPath();
+   					context.moveTo(l[i]["X0"],l[i]["Y0"]);
+   					context.lineTo(l[i]["X1"],l[i]["Y1"]);
+   					context.strokeStyle=l[i]['Color'];
+   					context.lineWidth=l[i]['Width'];
+   					context.stroke();
+					context.closePath();
+					}
+					if (l[i]["Type"]=='erase')
+					{
+					startx=l[i]["X0"]
+					starty=l[i]["Y0"]
+					rectw=20;
+					recth=20;
+					context.strokeRect(startx,starty,rectw,recth);
+					}
+				}
+			}
+		</script> 
+		{% endfor %}
+	</body>
+</html>

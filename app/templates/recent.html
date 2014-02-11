@@ -1,0 +1,29 @@
+<html>
+	<head>
+	<title> Recent Pictures </title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='image.css') }}">
+	</head>
+	<body>
+		<input type=button value="Home" onclick="homepic()" style ="width:150px;height:20px;background-color:white">		
+		<u><i><h1><center><font color="white">Recent Pictures....</center></h1></i></u>
+		{% for post in posts %}
+		<br><div align=center><font color="white">
+		<form method="post">
+		{{post.id}}
+		<input type=button name="pic" value={{post.title}} onclick="load(this.value)">
+		<script type="text/javascript">
+			function homepic()
+			{
+			  document.location.href="/";
+			}
+			function load(value)
+			{
+			  document.location.href="/recent/"+value;
+			}
+		</script>
+		</div>
+		</font>
+		{% endfor %}
+	</body>
+
+</html>
